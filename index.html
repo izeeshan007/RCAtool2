@@ -1,0 +1,576 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script> -->
+
+    <title>Mechanical Seal Selection Tool</title>
+    <img src="arrow.svg" alt="NA">
+    <!-- <script type="text/javascript">
+        $(document).ready(function() {
+            $("#status_report td.measure:contains('toxic')").css('background-color', '#C22B2E');
+        });
+    </script> -->
+    <style type="text/css">
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <table class="head">
+        <tr>
+            <td colspan="1"><img src="https://www.leakproofseals.com/images/leak-proof-logo.png" alt="NA"></td>
+            <td colspan="3" class="name">Mechanical Seal Selection Tool</td>
+        </tr>
+
+
+        <tr>
+            <td class="inqn">
+                <label for="inqn" class="inqn">Inquiry No.:</label>
+            </td>
+            <td><input type="text" id="inqn" class="inqn"></input>
+            </td>
+            <td class="revision">
+                <label for="revision" class="revision">Revision:</label>
+            </td>
+            <td>
+                <input type="text" id="revision" class="revision"></input>
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <table class="table1">
+        <tr>
+            <td><label for="selD" class="col1">Selected Date</label>
+                <input type="text" id="selD" class="col2"></input>
+            </td>
+            <td><label for="reqBy" class="col3">Requested By</label>
+                <input type="text" id="reqBy" class="col4"></input>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="selA" class="col1">Selected Against</label>
+                <select id="selA" name="Select">
+           <option>Select</option>        
+           <option>INQUIRY</option>
+           <option>DRF</option>        
+           </select></td>
+            <td><label for="brn" class="col3">Branch</label>
+                <select id="brn" name="Select">
+           <option>Select</option>
+           <option>Ahmedabad</option>
+           <option>Mumbai</option> 
+           <option>Vapi</option>        
+           <option>Delhi</option>        
+           <option>Bengalore</option>        
+           <option>Kolkata</option>        
+                  
+           </select></td>
+        </tr>
+
+        <tr>
+            <td><label for="inqD" class="col1">Inquiry Detail</label>
+                <input type="text" id="inqD" class="col2"></input>
+            </td>
+            <td><label for="selB" class="col3">Sealection By</label>
+                <select id="selB" name="Select">
+             <option>Select</option>
+           <option>Shahood Khan</option>
+           <option>Ishak Shaikh</option>        
+           </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="cust" class="col1">Customer</label>
+                <input type="text" id="cust" class="col2"></input>
+            </td>
+            <td><label for="selS" class="col3">Selected Seal</label>
+                <input type="text" id="selS" class="col4"></input>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+    <input id="toggle1" type="checkbox" checked>
+    <label class="labelexp1" for="toggle1">Input</label>
+    <div id="expand1">
+
+        <div id="row">
+            <div class="column">
+                <table class=" table2" style="width: auto; background: #301934  ">
+                    <tr>
+                        <td colspan="2 " id="fpr" style="font-size: 20px; text-align: center;">Fluid Properties</td>
+                    </tr>
+                    <tr>
+                        <td><label for="fluid " class="col5 ">Fluid:</label></td>
+                        <td>
+                            <select id="fluid " class="col6 ">
+                                <option>Select Fluid</option>        
+                                <option>H2O</option>
+                               <option>N2</option> 
+                               <option>H2S</option>        
+                               <option>Air</option>        
+                               <option>HCl</option>        
+                               <option>CH4</option>                
+                             
+                               </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="conc " class="col5 ">Concentration:</label></td>
+                        <td> <input type="text " id="conc " class="col6 "></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="minT " class="col5 ">Min. Temp:</label></td>
+                        <td> <input type="text " readonly id="minT " class="col6 "></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="maxT " class="col5 ">Max. Temp:</label></td>
+                        <td> <input type="text " readonly id="maxT " class="col6 "></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="melP " class="col5 ">Melting Point:</label></td>
+                        <td> <input type="text " id="melP " class="col6 "></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="boP " class="col5 ">Boiling Point:</label></td>
+                        <td> <input type="text " id="boP " class="col6 "></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="spg " class="col5 ">Specific Gravity:</label></td>
+                        <td> <input type="text " id="spg " class="col6 "></input>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="column">
+                <table id="status_report" class="table2">
+                    <tr class="tabrow">
+                        <td colspan="4" id="fpr" style="background-color: #ee9294; color: #301934;">Hazard Profile of Fluid</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" class="measure" id="demo">
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <input type="text" readonly class="para" id="text2">
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="4">
+
+                            <input type="text" readonly class="para" id="text3">
+
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="4">
+                            <input type="text" readonly class="para" id="text3">
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            <input type="text" readonly class="para" id="text5">
+
+
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            <input type="text" readonly class="para" id="text6">
+
+
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            <input type="text" readonly class="para">
+                        </td>
+
+
+
+
+                    </tr>
+
+
+
+
+
+
+                    <tr class="hazlvl"></tr>
+
+                    <td>
+                        <p style="background-color: rgb(70, 82, 255); font-size: 20px; margin-top: 10px; padding: 3px 2px; width: 130px;"> Hazard Level </p>
+                    </td>
+                    <td>
+                        <p style="background-color: #570001; text-align: center; color: aliceblue; font-size: 20px; margin-left:5px ; width: auto; padding: 3px; margin-top: 10px"> Extreme </p>
+                    </td>
+                    <td>
+                        <p style="background-color: #c51619; text-align: center; font-size: 20px; width: 90px; padding: 3px; margin-left:5px; margin-top: 10px;"> High
+                        </p>
+                    </td>
+                    <td>
+                        <p style="background-color: #ee9294; text-align: center; font-size: 20px; width: 100px; padding: 3px; margin-top: 10px"> Moderate </p>
+                    </td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- new section -->
+
+
+    <input id="toggle2" type="checkbox" checked>
+    <label class="labelexp2" for="toggle2"> Basic Recommendations </label>
+    <div id="expand2">
+        <table class=" table4" style="width: 300px; background: #301934 ">
+            <!-- <tr>
+                                    <
+                                    td colspan = "2 "
+                                id = "fpr"
+                                style = "font-size: 25px; text-align: center;" > Basic Tool Recommendations < /td> < /
+                                tr > -->
+            <!-- <tr>
+                                    <
+                                    td > < label
+                                for = "fluid "
+                                class = "col5 " > Fluid: < /label></td >
+                                    <
+                                    td >
+                                    <
+                                    select id = "fluid "
+                                class = "col6 " >
+                                    <
+                                    option > Select Fluid < /option>         <
+                                option > H2O < /option> <
+                                option > N2 < /option>  <
+                                option > H2S < /option>         <
+                                option > Air < /option>         <
+                                option > HCl < /option>         <
+                                option > CH4 < /option>        
+
+                                <
+                                /select> < /
+                                td > <
+                                    /tr> -->
+
+            <tr>
+                <td> <label for="selTyp" class="col5 "> Seal Type: </label></td>
+                <td> <input type="text " readonly id="selTyp" class="col6 "> </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="arrange" class="col5 "> Arrangement: </label></td>
+                <td>
+                    <input type="text " readonly id="arrange" class="col6 "> </input>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="flush" class="col5 "> Flush: </label></td>
+                <td> <input type="text " id="flush" class="col6 "> </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="neck" class="col5 ">Neck: </label>
+                </td>
+                <td>
+                    <input type="text " id="neck" class="col6 "> </input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="secondaryCont" class="col5 ">Secondary containment: 
+
+                                        </label></td>
+                <td> <input type="text " id="secondaryCont" class="col6 "> </input>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- section seal Selection -->
+
+    <input id="toggle3" type="checkbox" checked>
+    <label class="labelexp3" for="toggle3">Select All Recommendations</label>
+    <div id="expand3">
+        <table class=" table5 " style="width: 300px; background: rgb(127, 255, 88) ">
+            <tr>
+                <td colspan="2 " id="fpr" style="font-size: 25px; text-align: center;">Seal Selection</td>
+            </tr>
+            <tr>
+                <td><label for="selTyp1" class="col5 ">Seal Type :</label></td>
+                <td>
+                    <select id="selTyp1" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>Elastomer Bellow Seal</option>
+                 <option>Elastomer O-ring Seal</option> 
+                 <option>PTFE Bellow Seal</option>        
+                 <option>PTFE Wedge Seal</option>        
+                 <option>Welded Metal Bellow Seal</option>        
+                 <option>Formed Metal Bellow Seal</option>              
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="arrange1" class="col5 ">Arrangement :</label></td>
+                <td>
+                    <select id="arrange1" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>Single Seal</option>
+                 <option>Double Seal</option>               
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="flush1" class="col5 ">Flush :</label></td>
+                <td>
+                    <select id="flush1" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>None</option>
+                 <option>Product Recirculation</option>
+                 <option>Clean Flush</option>               
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="neck1" class="col5 ">Neck :</label></td>
+                <td> <input type="text " id="neck1" class="col6 "></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="secondaryCont1" class="col5 ">Secondary containment :</label></td>
+                <td>
+                    <select id="secondaryCont1" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>No Quench</option>
+                 <option>Static Quench</option>
+                 <option>Intermittent Quench</option>
+                 <option>Continuous Quench</option>
+                 <option>Leakage Containment</option>
+                 </select>
+                </td>
+            </tr>
+
+        </table>
+
+
+
+        <table class=" table6 " style="width: 300px; background: rgb(127, 255, 88) ">
+            <tr>
+                <td colspan="2 " id="fpr" style="font-size: 25px; text-align: center;">Seal Design Parameters</td>
+            </tr>
+            <tr>
+                <td><label for="desTyp" class="col5 ">Design Type :</label></td>
+                <td>
+                    <select id="desTyp" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>Pusher</option>
+                 <option>Non Pusher</option>               
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="sprdtl" class="col5 ">Spring Detail :</label></td>
+                <td>
+                    <select id="sprdtl" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>Single Spring</option>
+                 <option>Multi Spring</option>               
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="sprprt" class="col5 ">Spring  Protection :</label></td>
+                <td>
+                    <select id="sprprt" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>None</option>
+                 <option>Spring Protected</option>
+                 <option>No Special Requirement</option>               
+                 </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="secondaryCont1" class="col5 ">Spring/Bellow Motion :</label></td>
+                <td>
+                    <select id="secondaryCont1" class="col6 ">
+                  <option>-Select-</option>        
+                  <option>Spring / Bellow stationary</option>
+                 <option>Spring / Bellow rotary</option>
+                 
+                 </select>
+                </td>
+            </tr>
+
+        </table>
+
+
+
+
+        <!-- seal series selection -->
+
+
+    </div>
+
+    <input id="toggle4" type="checkbox" checked>
+    <label class="labelexp4" for="toggle4">Show seal Series</label>
+    <div id="expand4">
+        <table class="table3">
+            <tr>
+                <td colspan="4" id="recss">Recommended Seal Series</td>
+            </tr>
+
+            <tr class="row1">
+                <td><label class="colr">Options</label></td>
+                <td><label class="colt">Seal Series</label></td>
+                <td><label class="colt">Pmax(Bar)</label></td>
+                <td><label class="colt">Vmax(m/s)</label></td>
+
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad1"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series1"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p1"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t1"></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad2"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series2"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p2"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t2"></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad3"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series3"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p3"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t3"></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad4"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series4"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p4"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t4"></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad5"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series5"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p5"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t5"></input>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="radio" class="colr" id="rad6"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="series6"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="p6"></input>
+                </td>
+                <td><input type="text" readonly class="colt" id="t6"></input>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+    <!-- <script src="demo.js"></script> -->
+    <!-- <script src="new.js"></script> -->
+
+    <script src="index.pack.js"></script>
+</body>
+
+</html>
